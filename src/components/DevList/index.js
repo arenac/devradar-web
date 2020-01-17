@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
 
 import api from '../../services/api';
 
@@ -6,6 +7,7 @@ import { List, Dev, Header, Info } from './styles';
 
 export default function DevList() {
   const [devs, setDevs] = useState([]);
+  const newDev = useSelector(state => state.dev.dev);
 
   useEffect(() => {
     async function loadDevs() {
@@ -14,6 +16,12 @@ export default function DevList() {
     }
     loadDevs();
   }, []);
+
+  useEffect(() => {
+    if(newDev) {
+      setDevs(items => [...items, newDev]);
+    }
+  }, [newDev]);
 
   return (
     <>
