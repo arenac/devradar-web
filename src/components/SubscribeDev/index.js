@@ -37,7 +37,6 @@ export default function SubscribeDev() {
     });
     setGithubUserName('');
     setTechs('');
-    
   }
 
   return (
