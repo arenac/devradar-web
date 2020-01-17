@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import api from '../../services/api';
+
 import { Title, Form, InputContianer, InputGroup, Button } from './styles';
 
 export default function SubscribeDev() {
@@ -27,6 +29,15 @@ export default function SubscribeDev() {
 
   async function handleAddDev(e) {
     e.preventDefault();
+    const response = await api.post('/devs', {
+      github_username,
+      techs,
+      latitude,
+      longitude
+    });
+    setGithubUserName('');
+    setTechs('');
+    
   }
 
   return (
