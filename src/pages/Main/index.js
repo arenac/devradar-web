@@ -1,11 +1,11 @@
 import React from 'react';
 
-import SubscribeDev from '../SubscribeDev';
-import DevList from '../DevList';
+import SubscribeDev from '../../components/SubscribeDev';
+import DevList from '../../components/DevList';
 
 import { Container } from './styles';
 
-export default function Page() {
+export default function Main() {
   return (
     <Container>
       <aside>
