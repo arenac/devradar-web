@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-import api from '../../services/api';
+import { addNewDevRequest } from '../../store/module/dev/actions';
 
 import { Title, Form, InputContianer, InputGroup, Button } from './styles';
 
 export default function SubscribeDev() {
+  const dispatch = useDispatch();
   const [github_username, setGithubUserName] = useState('');
   const [techs, setTechs] = useState('');
   const [latitude, setLatitude] = useState('');
@@ -27,14 +29,14 @@ export default function SubscribeDev() {
 
   },[]);
 
-  async function handleAddDev(e) {
+  function handleAddDev(e) {
     e.preventDefault();
-    const response = await api.post('/devs', {
+    dispatch(addNewDevRequest({
       github_username,
       techs,
       latitude,
       longitude
-    });
+    }));
     setGithubUserName('');
     setTechs('');
   }
